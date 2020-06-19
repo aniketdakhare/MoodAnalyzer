@@ -11,20 +11,28 @@ public class MoodAnalysisTest
     @Before
     public void objectOf_MoodAnalysis_Class()
     {
-        moodAnalysis = new MoodAnalysis();
+        this.moodAnalysis = new MoodAnalysis();
     }
 
     @Test
     public void testSadMood()
     {
-        String mood = moodAnalysis.analyseMood("This is Sad mood");
+        String mood = this.moodAnalysis.analyzeMood("I am in Sad mood");
         Assert.assertEquals("SAD",mood);
     }
 
     @Test
     public void testHappyMood()
     {
-        String mood = moodAnalysis.analyseMood("This is Happy mood");
+        String mood = this.moodAnalysis.analyzeMood("I am in Happy mood");
         Assert.assertEquals("HAPPY",mood);
+    }
+
+    @Test
+    public void testSadMood_ByPassing_ValueTo_Constructor()
+    {
+        MoodAnalysis sadMood = new MoodAnalysis("I am in Sad mood");
+        String mood = sadMood.moodAnalyze();
+        Assert.assertEquals("SAD",mood);
     }
 }
