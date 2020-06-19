@@ -32,7 +32,9 @@ public class MoodAnalysis
     {
         try
         {
-            if (massage.contains("Sad"))
+            if ( massage.length() == 0 )
+                throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_EMPTY_VALUE, "It is empty, please enter some massage");
+            else if (massage.contains("Sad"))
                 return "SAD";
             else
                 return "HAPPY";

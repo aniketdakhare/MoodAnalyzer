@@ -47,13 +47,28 @@ public class MoodAnalysisTest
     }
 
     @Test
-    public void givenNullMassage_Should_Return_Happy()
+    public void givenNullMassage_Should_Give_MoodAnalysisException()
     {
         try
         {
             ExpectedException expectedException = ExpectedException.none();
             expectedException.expect(MoodAnalysisException.class);
             moodAnalysis.analyzeMood(null);
+        }
+        catch (MoodAnalysisException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenEmptyMassage_Should_Give_MoodAnalysisException()
+    {
+        try
+        {
+            ExpectedException expectedException = ExpectedException.none();
+            expectedException.expect(MoodAnalysisException.class);
+            moodAnalysis.moodAnalyze();
         }
         catch (MoodAnalysisException e)
         {
