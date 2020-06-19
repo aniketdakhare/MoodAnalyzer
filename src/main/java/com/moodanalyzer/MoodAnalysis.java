@@ -9,6 +9,9 @@ public class MoodAnalysis
      */
     public String analyseMood(String massage)
     {
-        return "SAD";
+        if (massage.contains("Sad"))
+            return "SAD";
+        else
+            return "HAPPY";
     }
 }

@@ -7,11 +7,24 @@ import org.junit.Test;
 
 public class MoodAnalysisTest
 {
-    @Test
-    public void testAnalyzeMood()
+    MoodAnalysis moodAnalysis;
+    @Before
+    public void objectOf_MoodAnalysis_Class()
     {
-        MoodAnalysis moodAnalysis = new MoodAnalysis();
+        moodAnalysis = new MoodAnalysis();
+    }
+
+    @Test
+    public void testSadMood()
+    {
         String mood = moodAnalysis.analyseMood("This is Sad mood");
         Assert.assertEquals("SAD",mood);
+    }
+
+    @Test
+    public void testHappyMood()
+    {
+        String mood = moodAnalysis.analyseMood("This is Happy mood");
+        Assert.assertEquals("HAPPY",mood);
     }
 }
