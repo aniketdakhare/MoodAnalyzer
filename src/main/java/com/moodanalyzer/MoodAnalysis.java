@@ -15,16 +15,20 @@ public class MoodAnalysis
 
     /**
      * METHOD TO ANALYSE THE MOOD OF A PERSON
+     * @return mood
+     * @throws MoodAnalysisException handles custom exception
+     */
+    public String moodAnalyze() throws MoodAnalysisException
+    {
+        return analyzeMood(massage);
+    }
+
+    /**
+     * PARAMETERIZED METHOD TO ANALYSE THE MOOD OF A PERSON
      * @param massage takes the mood
      * @return mood
      */
-    public String analyzeMood(String massage)
-    {
-        this.massage = massage;
-        return moodAnalyze();
-    }
-
-    public String moodAnalyze()
+    public String analyzeMood(String massage) throws MoodAnalysisException
     {
         try
         {
@@ -35,7 +39,7 @@ public class MoodAnalysis
         }
         catch (NullPointerException ne)
         {
-            return "HAPPY";
+            throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_NULL_VALUE, "Please enter the valid massage");
         }
     }
 
