@@ -11,20 +11,20 @@ public class MoodAnalysisTest
     @Before
     public void objectOf_MoodAnalysis_Class()
     {
-        this.moodAnalysis = new MoodAnalysis();
+        moodAnalysis = new MoodAnalysis();
     }
 
     @Test
     public void testSadMood()
     {
-        String mood = this.moodAnalysis.analyzeMood("I am in Sad mood");
+        String mood = moodAnalysis.analyzeMood("I am in Sad mood");
         Assert.assertEquals("SAD",mood);
     }
 
     @Test
     public void testHappyMood()
     {
-        String mood = this.moodAnalysis.analyzeMood("I am in Happy mood");
+        String mood = moodAnalysis.analyzeMood("I am in Happy mood");
         Assert.assertEquals("HAPPY",mood);
     }
 
@@ -41,6 +41,13 @@ public class MoodAnalysisTest
     {
         MoodAnalysis happyMood = new MoodAnalysis("I am in Happy mood");
         String mood = happyMood.moodAnalyze();
+        Assert.assertEquals("HAPPY",mood);
+    }
+
+    @Test
+    public void givenNullMassage_Should_Return_Happy()
+    {
+        String mood = moodAnalysis.analyzeMood(null);
         Assert.assertEquals("HAPPY",mood);
     }
 }

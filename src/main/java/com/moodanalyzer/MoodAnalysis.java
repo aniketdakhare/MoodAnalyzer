@@ -26,10 +26,17 @@ public class MoodAnalysis
 
     public String moodAnalyze()
     {
-        if (massage.contains("Sad"))
-            return "SAD";
-        else
+        try
+        {
+            if (massage.contains("Sad"))
+                return "SAD";
+            else
+                return "HAPPY";
+        }
+        catch (NullPointerException ne)
+        {
             return "HAPPY";
+        }
     }
 
     public MoodAnalysis()
