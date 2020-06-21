@@ -17,21 +17,21 @@ public class MoodAnalysisTest
     }
 
     @Test
-    public void testSadMood() throws MoodAnalysisException
+    public void givenSadMood_ShouldReturnSad() throws MoodAnalysisException
     {
         String mood = moodAnalysis.analyzeMood("I am in Sad mood");
         Assert.assertEquals("SAD",mood);
     }
 
     @Test
-    public void testHappyMood() throws MoodAnalysisException
+    public void givenHappyMood_ShouldReturnHappy() throws MoodAnalysisException
     {
         String mood = moodAnalysis.analyzeMood("I am in Happy mood");
         Assert.assertEquals("HAPPY",mood);
     }
 
     @Test
-    public void testSadMood_ByPassing_ValueTo_Constructor() throws MoodAnalysisException
+    public void givenSadMood_ByPassingValueTo_Constructor_ShouldReturnSad() throws MoodAnalysisException
     {
         MoodAnalysis sadMood = new MoodAnalysis("I am in Sad mood");
         String mood = sadMood.moodAnalyze();
@@ -39,7 +39,7 @@ public class MoodAnalysisTest
     }
 
     @Test
-    public void testHappyMood_ByPassing_ValueTo_Constructor() throws MoodAnalysisException
+    public void givenHappyMood_ByPassingValueTo_Constructor_ShouldReturnHappy() throws MoodAnalysisException
     {
         MoodAnalysis happyMood = new MoodAnalysis("I am in Happy mood");
         String mood = happyMood.moodAnalyze();
@@ -68,7 +68,7 @@ public class MoodAnalysisTest
         {
             ExpectedException expectedException = ExpectedException.none();
             expectedException.expect(MoodAnalysisException.class);
-            moodAnalysis.moodAnalyze();
+            moodAnalysis.analyzeMood("");
         }
         catch (MoodAnalysisException e)
         {

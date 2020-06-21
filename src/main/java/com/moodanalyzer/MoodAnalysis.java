@@ -33,7 +33,8 @@ public class MoodAnalysis
         try
         {
             if ( massage.length() == 0 )
-                throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_EMPTY_VALUE, "It is empty, please enter some massage");
+                throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_EMPTY_VALUE, "It is empty," +
+                        " please enter some massage");
             else if (massage.contains("Sad"))
                 return "SAD";
             else
@@ -41,7 +42,8 @@ public class MoodAnalysis
         }
         catch (NullPointerException ne)
         {
-            throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_NULL_VALUE, "Please enter the valid massage");
+            throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_NULL_VALUE, "Please enter the" +
+                    " valid massage");
         }
     }
 
