@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class MoodAnalysis
 {
-    String massage;
+    public static String massage;
 
     /**
      * Parameterized Constructor to initialize massage
-     * @param massage takes massage
+     * @param givenMassage takes massage
      */
-    public MoodAnalysis(String massage)
+    public MoodAnalysis(String givenMassage)
     {
-        this.massage = massage;
+        massage = givenMassage;
     }
 
     /**
