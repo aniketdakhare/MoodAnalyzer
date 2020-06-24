@@ -90,7 +90,7 @@ public class MoodAnalysisTest
     {
         ExpectedException expectedException = ExpectedException.none();
         expectedException.expect(MoodAnalysisException.class);
-        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood","hi");
+        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",null);
     }
 
     @Test
@@ -107,5 +107,14 @@ public class MoodAnalysisTest
         MoodAnalysis moodAnalyser = MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
                 "service.MoodAnalysis","I am in Happy mood");
         Assert.assertEquals(new MoodAnalysis("I am in Happy mood"),moodAnalyser);
+    }
+
+    @Test
+    public void givenClassNameWhenImproper_ShouldGive_MoodAnalysisException_ForParameterizedConstructor()
+    {
+        ExpectedException expectedException = ExpectedException.none();
+        expectedException.expect(MoodAnalysisException.class);
+        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",
+                "I am in Happy mood");
     }
 }
