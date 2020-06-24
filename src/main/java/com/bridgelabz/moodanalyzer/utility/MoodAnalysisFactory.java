@@ -6,11 +6,11 @@ import com.bridgelabz.moodanalyzer.service.MoodAnalysis;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class MoodAnalysisFactory
+public class MoodAnalysisFactory <T>
 {
     static String name = "com.bridgelabz.moodanalyzer.service.MoodAnalysis";
 
-    public static MoodAnalysis createMoodAnalyser(String className,String massage)
+    public static <T> MoodAnalysis createMoodAnalyser(String className,T massage)
     {
         try
         {
@@ -22,7 +22,8 @@ public class MoodAnalysisFactory
                         "No Such Class Error");
             Constructor<?> moodAnalysisConstructor = moodAnalysisClass.getConstructor(String.class);
             Object moodAnalysisObject = null;
-            if (massage != null)
+
+            if (massage instanceof String || massage == null)
                 moodAnalysisObject = moodAnalysisConstructor.newInstance(massage);
             else
                 throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_WRONG_CONSTRUCTOR_PARAMETER,
