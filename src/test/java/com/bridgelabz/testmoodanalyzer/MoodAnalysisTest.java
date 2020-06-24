@@ -1,7 +1,8 @@
-package com.testmoodanalyzer;
+package com.bridgelabz.testmoodanalyzer;
 
-import com.moodanalyzer.MoodAnalysis;
-import com.moodanalyzer.MoodAnalysisException;
+import com.bridgelabz.moodanalyzer.service.MoodAnalysis;
+import com.bridgelabz.moodanalyzer.exception.MoodAnalysisException;
+import com.bridgelabz.moodanalyzer.utility.MoodAnalysisFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -74,5 +75,12 @@ public class MoodAnalysisTest
         {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void givenMoodAnalyzerClassName_ShouldReturnMoodAnalyzerObject()
+    {
+        MoodAnalysis moodAnalyser = MoodAnalysisFactory.createMoodAnalyser();
+        Assert.assertEquals(new MoodAnalysis(),moodAnalyser);
     }
 }
