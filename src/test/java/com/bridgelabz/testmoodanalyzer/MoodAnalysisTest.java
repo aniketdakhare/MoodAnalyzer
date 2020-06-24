@@ -147,4 +147,11 @@ public class MoodAnalysisTest
         MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
                 "service.MoodAnalysis","analyzeMood","mass","I am in Happy mood");
     }
+
+    @Test
+    public void settingNullFieldValueToReflector_ShouldGiveMoodAnalysisException()
+    {
+        MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
+                "service.MoodAnalysis","analyzeMood",null,"I am in Happy mood");
+    }
 }
