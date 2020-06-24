@@ -126,4 +126,12 @@ public class MoodAnalysisTest
         MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis",
                 34);
     }
+
+    @Test
+    public void givenHappyMood_UsingReflection_ShouldReturnHappy() throws MoodAnalysisException
+    {
+        String mood = MoodAnalysisReflector.invokeAnalyzeMood("com.bridgelabz.moodanalyzer." +
+                "service.MoodAnalysis","I am in Happy mood");
+        Assert.assertEquals("HAPPY",mood);
+    }
 }
