@@ -1,4 +1,8 @@
-package com.moodanalyzer;
+package com.bridgelabz.moodanalyzer.service;
+
+import com.bridgelabz.moodanalyzer.exception.MoodAnalysisException;
+
+import java.util.Objects;
 
 public class MoodAnalysis
 {
@@ -49,5 +53,19 @@ public class MoodAnalysis
 
     public MoodAnalysis()
     {
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoodAnalysis that = (MoodAnalysis) o;
+        return Objects.equals(massage, that.massage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(massage);
     }
 }
