@@ -22,7 +22,6 @@ public class MoodAnalysisFactory <T>
                         "No Such Class Error");
             Constructor<?> moodAnalysisConstructor = moodAnalysisClass.getConstructor(String.class);
             Object moodAnalysisObject = null;
-
             if (massage instanceof String || massage == null)
                 moodAnalysisObject = moodAnalysisConstructor.newInstance(massage);
             else
@@ -30,11 +29,11 @@ public class MoodAnalysisFactory <T>
                         "No Such Method Error");
             return (MoodAnalysis) moodAnalysisObject;
         }
-        catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | InstantiationException e)
+        catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException  e)
         {
             e.printStackTrace();
         }
-        catch (MoodAnalysisException | IllegalAccessException e)
+        catch (MoodAnalysisException | IllegalAccessException | InstantiationException e)
         {
             e.printStackTrace();
         }
