@@ -74,7 +74,7 @@ public class MoodAnalysisReflector <T>
         String mood = null;
         try
         {
-            if (fieldMassage.equals(fieldVariable))
+            if (fieldMassage.equals(fieldVariable) || fieldVariable != null)
             {
                 Field fieldMood = MoodAnalysis.class.getField(fieldVariable);
                 if (((String) massage).contains("Sad"))
