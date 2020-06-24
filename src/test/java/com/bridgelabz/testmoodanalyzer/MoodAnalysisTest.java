@@ -15,6 +15,8 @@ public class MoodAnalysisTest
     public void objectOf_MoodAnalysis_Class()
     {
         moodAnalysis = new MoodAnalysis();
+        ExpectedException expectedException = ExpectedException.none();
+        expectedException.expect(MoodAnalysisException.class);
     }
 
     @Test
@@ -52,8 +54,6 @@ public class MoodAnalysisTest
     {
         try
         {
-            ExpectedException expectedException = ExpectedException.none();
-            expectedException.expect(MoodAnalysisException.class);
             moodAnalysis.analyzeMood(null);
         }
         catch (MoodAnalysisException e)
@@ -67,8 +67,6 @@ public class MoodAnalysisTest
     {
         try
         {
-            ExpectedException expectedException = ExpectedException.none();
-            expectedException.expect(MoodAnalysisException.class);
             moodAnalysis.analyzeMood("");
         }
         catch (MoodAnalysisException e)
@@ -88,17 +86,14 @@ public class MoodAnalysisTest
     @Test
     public void givenClassNameWhenImproper_ShouldGive_MoodAnalysisException_ForDefaultConstructor()
     {
-        ExpectedException expectedException = ExpectedException.none();
-        expectedException.expect(MoodAnalysisException.class);
         MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",null);
     }
 
     @Test
     public void givenClassWithImproperConstructor_ShouldGive_MoodAnalysisException_ForDefaultConstructor()
     {
-        ExpectedException expectedException = ExpectedException.none();
-        expectedException.expect(MoodAnalysisException.class);
-        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis","hi");
+        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis",
+                "hi");
     }
 
     @Test
@@ -112,8 +107,6 @@ public class MoodAnalysisTest
     @Test
     public void givenClassNameWhenImproper_ShouldGive_MoodAnalysisException_ForParameterizedConstructor()
     {
-        ExpectedException expectedException = ExpectedException.none();
-        expectedException.expect(MoodAnalysisException.class);
         MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",
                 "I am in Happy mood");
     }
@@ -121,17 +114,22 @@ public class MoodAnalysisTest
     @Test
     public void givenClassWithImproperConstructor_ShouldGive_MoodAnalysisException_ForParameterizedConstructor()
     {
-        ExpectedException expectedException = ExpectedException.none();
-        expectedException.expect(MoodAnalysisException.class);
         MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis",
                 34);
     }
 
     @Test
-    public void givenHappyMood_UsingReflection_ShouldReturnHappy() throws MoodAnalysisException
+    public void givenHappyMood_UsingReflection_ShouldReturnHappy()
     {
         String mood = MoodAnalysisReflector.invokeAnalyzeMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","I am in Happy mood");
+                "service.MoodAnalysis","analyzeMood","I am in Happy mood");
         Assert.assertEquals("HAPPY",mood);
+    }
+
+    @Test
+    public void givenHappyMoodToImproperMethod_UsingReflection_ShouldReturnHappy()
+    {
+        MoodAnalysisReflector.invokeAnalyzeMood("com.bridgelabz.moodanalyzer." +
+                "service.MoodAnalysis","analyze","I am in Happy mood");
     }
 }
