@@ -22,7 +22,7 @@ public class MoodAnalysisFactory
                         "No Such Class Error");
             Constructor<?> moodAnalysisConstructor = moodAnalysisClass.getConstructor(String.class);
             Object moodAnalysisObject = null;
-            if (massage == null)
+            if (massage != null)
                 moodAnalysisObject = moodAnalysisConstructor.newInstance(massage);
             else
                 throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_WRONG_CONSTRUCTOR_PARAMETER,
