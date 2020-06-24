@@ -117,4 +117,13 @@ public class MoodAnalysisTest
         MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",
                 "I am in Happy mood");
     }
+
+    @Test
+    public void givenClassWithImproperConstructor_ShouldGive_MoodAnalysisException_ForParameterizedConstructor()
+    {
+        ExpectedException expectedException = ExpectedException.none();
+        expectedException.expect(MoodAnalysisException.class);
+        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis",
+                34);
+    }
 }
