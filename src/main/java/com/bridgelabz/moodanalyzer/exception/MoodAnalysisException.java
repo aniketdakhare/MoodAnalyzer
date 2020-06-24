@@ -1,8 +1,8 @@
-package com.moodanalyzer;
+package com.bridgelabz.moodanalyzer.exception;
 
 public class MoodAnalysisException extends Exception
 {
-    enum ErrorType
+    public enum ErrorType
     {
         ENTERED_NULL_VALUE, ENTERED_EMPTY_VALUE
     }
