@@ -22,7 +22,7 @@ public class MoodAnalysis
      * @return mood
      * @throws MoodAnalysisException handles custom exception
      */
-    public String moodAnalyze() throws MoodAnalysisException
+    public String analyzeMood() throws MoodAnalysisException
     {
         return analyzeMood(massage);
     }

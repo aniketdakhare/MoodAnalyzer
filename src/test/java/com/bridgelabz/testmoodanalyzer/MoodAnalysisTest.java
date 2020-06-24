@@ -2,7 +2,7 @@ package com.bridgelabz.testmoodanalyzer;
 
 import com.bridgelabz.moodanalyzer.service.MoodAnalysis;
 import com.bridgelabz.moodanalyzer.exception.MoodAnalysisException;
-import com.bridgelabz.moodanalyzer.utility.MoodAnalysisFactory;
+import com.bridgelabz.moodanalyzer.utility.MoodAnalysisReflector;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +35,7 @@ public class MoodAnalysisTest
     public void givenSadMood_ByPassingValueTo_Constructor_ShouldReturnSad() throws MoodAnalysisException
     {
         MoodAnalysis sadMood = new MoodAnalysis("I am in Sad mood");
-        String mood = sadMood.moodAnalyze();
+        String mood = sadMood.analyzeMood();
         Assert.assertEquals("SAD",mood);
     }
 
@@ -43,7 +43,7 @@ public class MoodAnalysisTest
     public void givenHappyMood_ByPassingValueTo_Constructor_ShouldReturnHappy() throws MoodAnalysisException
     {
         MoodAnalysis happyMood = new MoodAnalysis("I am in Happy mood");
-        String mood = happyMood.moodAnalyze();
+        String mood = happyMood.analyzeMood();
         Assert.assertEquals("HAPPY",mood);
     }
 
@@ -80,7 +80,7 @@ public class MoodAnalysisTest
     @Test
     public void givenMoodAnalyzerClassName_ShouldReturnMoodAnalyzerObject_ForDefaultConstructor()
     {
-        MoodAnalysis moodAnalyser = MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
+        MoodAnalysis moodAnalyser = MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
                 "service.MoodAnalysis",null);
         Assert.assertEquals(new MoodAnalysis(),moodAnalyser);
     }
@@ -90,7 +90,7 @@ public class MoodAnalysisTest
     {
         ExpectedException expectedException = ExpectedException.none();
         expectedException.expect(MoodAnalysisException.class);
-        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",null);
+        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",null);
     }
 
     @Test
@@ -98,13 +98,13 @@ public class MoodAnalysisTest
     {
         ExpectedException expectedException = ExpectedException.none();
         expectedException.expect(MoodAnalysisException.class);
-        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis","hi");
+        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis","hi");
     }
 
     @Test
     public void givenMoodAnalyzerClassName_ShouldReturnMoodAnalyzerObject_ForParameterizedConstructor()
     {
-        MoodAnalysis moodAnalyser = MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
+        MoodAnalysis moodAnalyser = MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
                 "service.MoodAnalysis","I am in Happy mood");
         Assert.assertEquals(new MoodAnalysis("I am in Happy mood"),moodAnalyser);
     }
@@ -114,7 +114,7 @@ public class MoodAnalysisTest
     {
         ExpectedException expectedException = ExpectedException.none();
         expectedException.expect(MoodAnalysisException.class);
-        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",
+        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",
                 "I am in Happy mood");
     }
 
@@ -123,7 +123,7 @@ public class MoodAnalysisTest
     {
         ExpectedException expectedException = ExpectedException.none();
         expectedException.expect(MoodAnalysisException.class);
-        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis",
+        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.MoodAnalysis",
                 34);
     }
 }

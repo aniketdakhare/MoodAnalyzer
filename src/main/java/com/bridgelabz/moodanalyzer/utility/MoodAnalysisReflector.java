@@ -6,7 +6,7 @@ import com.bridgelabz.moodanalyzer.service.MoodAnalysis;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class MoodAnalysisFactory <T>
+public class MoodAnalysisReflector <T>
 {
     static String name = "com.bridgelabz.moodanalyzer.service.MoodAnalysis";
 
@@ -38,5 +38,11 @@ public class MoodAnalysisFactory <T>
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static <T> String invokeAnalyzeMood(String className,T massage) throws MoodAnalysisException
+    {
+        MoodAnalysis moodAnalysis = createMoodAnalyser(className, massage);
+        return moodAnalysis.analyzeMood();
     }
 }
