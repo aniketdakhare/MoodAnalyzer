@@ -80,7 +80,16 @@ public class MoodAnalysisTest
     @Test
     public void givenMoodAnalyzerClassName_ShouldReturnMoodAnalyzerObject()
     {
-        MoodAnalysis moodAnalyser = MoodAnalysisFactory.createMoodAnalyser();
+        MoodAnalysis moodAnalyser = MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
+                "service.MoodAnalysis");
         Assert.assertEquals(new MoodAnalysis(),moodAnalyser);
+    }
+
+    @Test
+    public void givenClassNameWhenImproper_ShouldGive_MoodAnalysisException()
+    {
+        ExpectedException expectedException = ExpectedException.none();
+        expectedException.expect(MoodAnalysisException.class);
+        MoodAnalysisFactory.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood");
     }
 }
