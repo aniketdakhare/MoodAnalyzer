@@ -4,7 +4,7 @@ public class MoodAnalysisException extends Exception
 {
     public enum ErrorType
     {
-        ENTERED_NULL_VALUE, ENTERED_EMPTY_VALUE
+        ENTERED_NULL_VALUE, ENTERED_EMPTY_VALUE,ENTERED_WRONG_CLASS_NAME
     }
 
     ErrorType type;
