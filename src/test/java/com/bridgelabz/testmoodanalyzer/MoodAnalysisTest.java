@@ -137,7 +137,14 @@ public class MoodAnalysisTest
     public void setHappyMassageThroughReflector_ShouldReturnHappy()
     {
         String mood = MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","analyzeMood","I am in Happy mood");
+                "service.MoodAnalysis","analyzeMood","massage","I am in Happy mood");
         Assert.assertEquals("HAPPY",mood);
+    }
+
+    @Test
+    public void givenImproperFieldToSet_ShouldGiveMoodAnalysisException()
+    {
+        MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
+                "service.MoodAnalysis","analyzeMood","mass","I am in Happy mood");
     }
 }
