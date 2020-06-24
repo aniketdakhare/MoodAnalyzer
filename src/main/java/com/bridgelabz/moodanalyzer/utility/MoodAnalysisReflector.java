@@ -12,6 +12,7 @@ public class MoodAnalysisReflector <T>
 {
     static String name = "com.bridgelabz.moodanalyzer.service.MoodAnalysis";
     static String method= "analyzeMood";
+    static String fieldMassage;
 
     public static <T> MoodAnalysis createMoodAnalyser(String className,T massage)
     {
@@ -62,6 +63,25 @@ public class MoodAnalysisReflector <T>
             e.printStackTrace();
         }
         catch (MoodAnalysisException e)
+        {
+            e.printStackTrace();
+        }
+        return mood;
+    }
+
+    public static<T> String dynamicMood(String className,String methodName, T massage)
+    {
+        String mood = null;
+        try
+        {
+            Field fieldMood = MoodAnalysis.class.getField("massage");
+            if (((String) massage).contains("Sad"))
+                fieldMood.set(massage,"Sad");
+            else
+                fieldMood.set(massage,"Happy");
+        mood = invokeAnalyzeMood(className, methodName, massage);
+        }
+        catch (NoSuchFieldException | IllegalAccessException e)
         {
             e.printStackTrace();
         }
