@@ -23,14 +23,14 @@ public class MoodAnalysisTest
     public void givenSadMood_ShouldReturnSad() throws MoodAnalysisException
     {
         String mood = moodAnalysis.analyzeMood("I am in Sad mood");
-        Assert.assertEquals("SAD",mood);
+        Assert.assertEquals("SAD", mood);
     }
 
     @Test
     public void givenHappyMood_ShouldReturnHappy() throws MoodAnalysisException
     {
         String mood = moodAnalysis.analyzeMood("I am in Happy mood");
-        Assert.assertEquals("HAPPY",mood);
+        Assert.assertEquals("HAPPY", mood);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class MoodAnalysisTest
     {
         MoodAnalysis sadMood = new MoodAnalysis("I am in Sad mood");
         String mood = sadMood.analyzeMood();
-        Assert.assertEquals("SAD",mood);
+        Assert.assertEquals("SAD", mood);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class MoodAnalysisTest
     {
         MoodAnalysis happyMood = new MoodAnalysis("I am in Happy mood");
         String mood = happyMood.analyzeMood();
-        Assert.assertEquals("HAPPY",mood);
+        Assert.assertEquals("HAPPY", mood);
     }
 
     @Test
@@ -79,14 +79,14 @@ public class MoodAnalysisTest
     public void givenMoodAnalyzerClassName_ShouldReturnMoodAnalyzerObject_ForDefaultConstructor()
     {
         MoodAnalysis moodAnalyser = MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis",null);
-        Assert.assertEquals(new MoodAnalysis(),moodAnalyser);
+                "service.MoodAnalysis", null);
+        Assert.assertEquals(new MoodAnalysis(), moodAnalyser);
     }
 
     @Test
     public void givenClassNameWhenImproper_ShouldGive_MoodAnalysisException_ForDefaultConstructor()
     {
-        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood",null);
+        MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer.service.Mood", null);
     }
 
     @Test
@@ -100,8 +100,8 @@ public class MoodAnalysisTest
     public void givenMoodAnalyzerClassName_ShouldReturnMoodAnalyzerObject_ForParameterizedConstructor()
     {
         MoodAnalysis moodAnalyser = MoodAnalysisReflector.createMoodAnalyser("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","I am in Happy mood");
-        Assert.assertEquals(new MoodAnalysis("I am in Happy mood"),moodAnalyser);
+                "service.MoodAnalysis", "I am in Happy mood");
+        Assert.assertEquals(new MoodAnalysis("I am in Happy mood"), moodAnalyser);
     }
 
     @Test
@@ -122,36 +122,36 @@ public class MoodAnalysisTest
     public void givenHappyMood_UsingReflection_ShouldReturnHappy()
     {
         String mood = MoodAnalysisReflector.invokeAnalyzeMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","analyzeMood","I am in Happy mood");
-        Assert.assertEquals("HAPPY",mood);
+                "service.MoodAnalysis", "analyzeMood", "I am in Happy mood");
+        Assert.assertEquals("HAPPY", mood);
     }
 
     @Test
     public void givenHappyMoodToImproperMethod_UsingReflection_ShouldReturnHappy()
     {
         MoodAnalysisReflector.invokeAnalyzeMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","analyze","I am in Happy mood");
+                "service.MoodAnalysis", "analyze", "I am in Happy mood");
     }
 
     @Test
     public void setHappyMassageThroughReflector_ShouldReturnHappy()
     {
         String mood = MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","analyzeMood","massage","I am in Happy mood");
-        Assert.assertEquals("HAPPY",mood);
+                "service.MoodAnalysis", "analyzeMood", "massage", "I am in Happy mood");
+        Assert.assertEquals("HAPPY", mood);
     }
 
     @Test
     public void givenImproperFieldToSet_ShouldGiveMoodAnalysisException()
     {
         MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","analyzeMood","mass","I am in Happy mood");
+                "service.MoodAnalysis", "analyzeMood", "mass", "I am in Happy mood");
     }
 
     @Test
     public void settingNullFieldValueToReflector_ShouldGiveMoodAnalysisException()
     {
         MoodAnalysisReflector.dynamicMood("com.bridgelabz.moodanalyzer." +
-                "service.MoodAnalysis","analyzeMood",null,"I am in Happy mood");
+                "service.MoodAnalysis", "analyzeMood", null, "I am in Happy mood");
     }
 }

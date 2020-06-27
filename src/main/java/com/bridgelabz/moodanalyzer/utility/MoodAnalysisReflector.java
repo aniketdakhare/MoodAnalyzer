@@ -11,10 +11,10 @@ import java.lang.reflect.Method;
 public class MoodAnalysisReflector <T>
 {
     static String name = "com.bridgelabz.moodanalyzer.service.MoodAnalysis";
-    static String method= "analyzeMood";
+    static String method = "analyzeMood";
     static String fieldMassage = "massage";
 
-    public static <T> MoodAnalysis createMoodAnalyser(String className,T massage)
+    public static <T> MoodAnalysis createMoodAnalyser(String className, T massage)
     {
         try
         {
@@ -44,7 +44,7 @@ public class MoodAnalysisReflector <T>
         return null;
     }
 
-    public static <T> String invokeAnalyzeMood(String className,String methodName, T massage)
+    public static <T> String invokeAnalyzeMood(String className, String methodName, T massage)
     {
         String mood = null;
         try
@@ -69,7 +69,7 @@ public class MoodAnalysisReflector <T>
         return mood;
     }
 
-    public static<T> String dynamicMood(String className,String methodName,String fieldVariable, T massage)
+    public static<T> String dynamicMood(String className, String methodName, String fieldVariable, T massage)
     {
         String mood = null;
         try
@@ -78,16 +78,16 @@ public class MoodAnalysisReflector <T>
             {
                 Field fieldMood = MoodAnalysis.class.getField(fieldVariable);
                 if (((String) massage).contains("Sad"))
-                    fieldMood.set(massage,"Sad");
+                    fieldMood.set(massage, "Sad");
                 else
-                    fieldMood.set(massage,"Happy");
+                    fieldMood.set(massage, "Happy");
             }
             else
             {
                 throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_WRONG_FIELD,
                         "No Such Field Error");
             }
-        mood = invokeAnalyzeMood(className, methodName, massage);
+            mood = invokeAnalyzeMood(className, methodName, massage);
         }
         catch (NoSuchFieldException | IllegalAccessException | MoodAnalysisException e)
         {

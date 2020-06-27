@@ -65,7 +65,8 @@ public class MoodAnalysis
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(massage);
     }
 }
