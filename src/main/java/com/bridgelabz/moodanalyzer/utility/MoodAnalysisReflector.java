@@ -84,7 +84,7 @@ public class MoodAnalysisReflector <T>
             }
             else
             {
-                throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_WRONG_FIELD,
+                throw new MoodAnalysisException(MoodAnalysisException.ErrorType.ENTERED_WRONG_FIELD_NAME,
                         "No Such Field Error");
             }
             mood = invokeAnalyzeMood(className, methodName, massage);
